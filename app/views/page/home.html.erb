@@ -1,0 +1,26 @@
+<div class="page--index">
+  <div class="hero">
+    <h1 class="hero__headline">
+      <span class="padrino-name">API Ocean</span>
+      is a collection of simple but useful API demos built upon the Padrino web framework.
+    </h1>
+    <div class="hero__text">
+      <p>This site was created to showcase (and internally, consume) several simple but useful APIs
+        we built for our use-case. This code lives on Github, wherein implementation details for any
+        API can be seen.</p>
+    </div>
+    <p class="hero__button">
+      <a href="https://github.com/nikhgupta/codewithsense-api" class="button--large">
+        <span class="fa fa-github button__icon"></span>View on Github
+      </a>
+    </p>
+    <p class="hero__release">
+      <span class="label--dark">Current APIs &ndash; </span><br />
+      <%= PROTECTED_APIS.map{|name| link_to name.titleize, "##{name.tr('_', '-')}"}.join(", ").html_safe %>
+    </p>
+  </div>
+  <% PROTECTED_APIS.each do |name| %>
+    <hr />
+    <%= Redcarpet::Pygmentize.render_file Padrino.root("app/views/page/apis/#{name}.html.md") %>
+  <% end %>
+</div>
