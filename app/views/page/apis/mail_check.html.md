@@ -4,7 +4,7 @@ Check whether an email or domain belongs to a free, professional or disposable m
 
 ```sh
 ➲ encoded=$(echo nick@x.a.betr.co | base64)
-➲ curl -s "http://localhost:3000/mail_check/$encoded" | json_pp
+➲ curl -s api.codewithsense.com/mail_check/$encoded | json_pp
 ```
 
 ```json
