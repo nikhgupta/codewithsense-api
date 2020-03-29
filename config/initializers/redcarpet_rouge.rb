@@ -10,7 +10,8 @@ end
 module Redcarpet
   class Pygmentize
     def self.markdown
-      @markdown ||= Redcarpet::Markdown.new RougeRenderer,
+      renderer = RougeRenderer.new(with_toc_data: true)
+      @markdown ||= Redcarpet::Markdown.new renderer,
                                             autolink: true,
                                             fenced_code_blocks: true,
                                             space_after_headers: true
