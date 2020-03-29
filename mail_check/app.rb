@@ -8,14 +8,6 @@ module CodeWithSense
     set :checker, MailProvider.new
     set :read_me, 'https://github.com/nikhgupta/mail_provider'
 
-    def self.protect(protected)
-      return unless protected
-
-      condition do
-        halt 403, 'No secrets for you!' unless params[:key] == 's3cr3t'
-      end
-    end
-
     get :api, '/', with: :str, provides: :json do
       data = search_provider_with_sanitized_errors(params[:str])
       status data.delete(:http_code) || 200
